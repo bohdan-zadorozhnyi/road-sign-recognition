@@ -20,7 +20,7 @@ def load_data(data_dir, csv_file=None):
     """
     images = []
     labels = []
-    
+     
     if csv_file:
         # Load data using CSV file
         df = pd.read_csv(csv_file)
