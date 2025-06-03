@@ -3,11 +3,21 @@ import argparse
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
+import wandb
 
 # Import our modules
 from data_preparation import load_data, preprocess_data, split_data, visualize_data, data_distribution
 from model import RoadSignRecognitionModel
 from utils import confusion_matrix_plot, save_model_history, create_tf_dataset
+
+class CustomWandbCallback(tf.keras.callbacks.Callback):
+    def on_epoch_end(self, epoch, logs=None):
+        wandb.log({
+            "train_loss": logs.get("loss"),
+            "train_accuracy": logs.get("accuracy"),
+            "val_loss": logs.get("val_loss"),
+            "val_accuracy": logs.get("val_accuracy")
+        })
 
 def parse_args():
     """Parse command line arguments"""
@@ -89,6 +99,8 @@ def main():
     # Create and compile model
     print("Creating model...")
     model = RoadSignRecognitionModel(input_shape=input_shape, num_classes=args.num_classes)
+
+
     
     # Define callbacks
     callbacks = [
@@ -111,7 +123,8 @@ def main():
             patience=5,
             min_lr=1e-6,
             verbose=1
-        )
+        ),
+        # CustomWandbCallback()
     ]
     
     # Train the model

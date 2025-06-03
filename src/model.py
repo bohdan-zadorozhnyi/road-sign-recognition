@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 
 class RoadSignRecognitionModel:
-    def __init__(self, input_shape=(32, 32, 3), num_classes=43):
+    def __init__(self, input_shape=(32, 32, 3), num_classes=43, dropout_rate=0.5):
         """
         Initialize the Road Sign Recognition model
         Args:
@@ -14,6 +14,7 @@ class RoadSignRecognitionModel:
         """
         self.input_shape = input_shape
         self.num_classes = num_classes
+        self.dropout_rate = dropout_rate
         self.model = self._build_model()
         
     def _build_model(self):
@@ -35,7 +36,7 @@ class RoadSignRecognitionModel:
         # Fully connected layers
         model.add(layers.Flatten())
         model.add(layers.Dense(128, activation='relu'))
-        model.add(layers.Dropout(0.5))
+        model.add(layers.Dropout(self.dropout_rate))
         model.add(layers.Dense(self.num_classes, activation='softmax'))
         
         # Compile the model
