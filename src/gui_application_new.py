@@ -29,10 +29,10 @@ class RoadSignRecognitionApp:
         self.root.resizable(False, False)
         
         # Set colors - dark theme
-        self.bg_color = "#2c3e50"  # Dark blue-grey
-        self.accent_color = "#34495e"  # Slightly lighter blue-grey
+        self.bg_color = "#A0A0A0"  # Dark blue-grey
+        self.accent_color = "#484848"  # Slightly lighter blue-grey
         self.text_color = "#ecf0f1"  # Light grey-white for text
-        self.button_color = "#3498db"  # Blue for buttons
+        self.button_color = "#b0b0b0"  # Blue for buttons
         self.root.config(bg=self.bg_color)
         
         # Load model
@@ -121,7 +121,8 @@ class RoadSignRecognitionApp:
         load_btn = tk.Button(button_center_frame, text="Load Image", command=self.load_image, 
                             width=15, height=2, relief=tk.RAISED, bg=self.button_color, fg="white",
                             activebackground="#2980b9", activeforeground="white", font=("Arial", 10))
-        load_btn.pack(padx=10)
+        load_btn.pack(padx=5)
+        load_btn.pack(pady=20)
         
         # Right frame components
         # Process section title with horizontal line below it
