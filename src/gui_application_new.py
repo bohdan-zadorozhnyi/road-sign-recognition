@@ -29,10 +29,10 @@ class RoadSignRecognitionApp:
         self.root.resizable(False, False)
         
         # Set colors - dark theme
-        self.bg_color = "#A0A0A0"  # Dark blue-grey
-        self.accent_color = "#484848"  # Slightly lighter blue-grey
-        self.text_color = "#ecf0f1"  # Light grey-white for text
-        self.button_color = "#b0b0b0"  # Blue for buttons
+        self.bg_color = "#969696" 
+        self.accent_color = "#4E4D51"  
+        self.text_color = "#ffffff"  # for text
+        self.button_color = "#3c3f44"  # for buttons
         self.root.config(bg=self.bg_color)
         
         # Load model
@@ -173,11 +173,12 @@ class RoadSignRecognitionApp:
                                activebackground="#2980b9", activeforeground="white", font=("Arial", 10))
         self.save_btn.pack(side=tk.RIGHT)
         self.save_btn.config(state=tk.DISABLED)
+        self.save_btn.pack(pady=25)
         
         # Footer
-        footer_text = "Road Sign Recognition Application v1.0 | © 2025 | Developed by Andrei Marshyn, Anastasiia Kuvshinova, Bohdan Zadorozhnyi, Yurii Demoshenko"
-        footer_label = tk.Label(self.root, text=footer_text, bg=self.bg_color, fg="#bdc3c7", font=("Arial", 8))
-        footer_label.place(x=10, y=520)
+        footer_text = "Road Sign Recognition Application v1.0 | © 2025 | Developed by Andrei Marshyn, Anastasiia Kuvshynova, Bohdan Zadorozhnyi, Yurii Demoshenko                          "
+        footer_label = tk.Label(self.root, text=footer_text, bg="#2a2727", fg="#ffffff", font=("Arial", 10))
+        footer_label.place(x=0, y=528)
     
     def load_image(self):
         """Load an image file and display it"""
